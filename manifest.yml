@@ -1,0 +1,11 @@
+---
+applications:
+- name: spring-postgres-cf
+  memory: 1G
+  path: target/postgres-con-boot-1.0.0-SNAPSHOT.jar
+  services:
+  - pgsql
+  
+  env:
+    JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
+    SPRING_PROFILES_ACTIVE: cloud

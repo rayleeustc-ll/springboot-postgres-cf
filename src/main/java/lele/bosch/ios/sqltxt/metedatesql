@@ -1,0 +1,14 @@
+CREATE TABLE role
+(
+	role_id SERIAL PRIMARY KEY,
+    description text,
+    role_name text
+);
+
+
+INSERT INTO role (description,role_name)
+VALUES ( 'role1Desc', 'role1' );
+INSERT INTO role (description,role_name)
+VALUES ( 'testRoleDesc', 'role2' );
+INSERT INTO role (description,role_name)
+VALUES ( 'role2desc', 'role3' );
