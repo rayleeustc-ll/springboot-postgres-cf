@@ -1,6 +1,8 @@
 package lele.bosch.ios.controller;
 
 import com.alibaba.fastjson.JSON;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lele.bosch.ios.model.Role;
 import lele.bosch.ios.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +16,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/role")
+@Api(value = "Roles", tags = {"roles"})
 public class RoleController {
 
     @Autowired
     private RoleService roleService;
 
+    @ApiOperation(value = "List all the roles")
     @GetMapping("/listRoles")
     public String listRole() {
         try {
@@ -28,6 +32,7 @@ public class RoleController {
             return e.getMessage();
         }
     }
+    @ApiOperation(value = "Insert a role, parameters: role name and role description")
     @GetMapping("/insertRole")
     public String insertRole (@RequestParam String roleName,
                               @RequestParam String roleDesc){
@@ -39,6 +44,7 @@ public class RoleController {
         }
     }
 
+    @ApiOperation(value = "Delete the role by given roleId")
     @GetMapping("/deleteRole")
     public String deleteRoleById(@RequestParam( name ="id") Integer roleID){
         try {
@@ -48,6 +54,8 @@ public class RoleController {
             return e.getMessage();
         }
     }
+
+    @ApiOperation(value = "Find a role by name")
     @GetMapping("/findRoleByName")
     public String findRoleByName(String name){
         try {
