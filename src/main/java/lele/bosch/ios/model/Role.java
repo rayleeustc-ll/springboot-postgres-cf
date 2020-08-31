@@ -15,9 +15,7 @@ import java.io.Serializable;
 @Accessors(chain = true)
 @ApiModel(value="role model", description="Model entity of role")
 @TableName("role")
-public class Role extends Model<Role> {
-
-    private static final long serialVersionUID = 1L;
+public class Role implements Serializable {
 
     @ApiModelProperty(value = "description")
     private String description;
@@ -30,9 +28,5 @@ public class Role extends Model<Role> {
     @TableField("role_name")
     private String roleName;
 
-    @Override
-    protected Serializable pkVal() {
-        return this.description;
-    }
 
 }

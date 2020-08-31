@@ -1,9 +1,11 @@
-package lele.bosch.ios.config.swagger;
+package lele.bosch.ios.config;
 
 import com.google.common.base.Predicate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
@@ -17,6 +19,9 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @EnableSwagger2
 public class SwaggerConfig {
 
+    @Value(value ="${spring.swagger2.enabled}")
+    private boolean swaggerEnabled;
+
     @Bean
     public Docket controllerApi() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -28,6 +33,7 @@ public class SwaggerConfig {
                         .build())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("lele.bosch.ios"))//scan the package
+                .paths(PathSelectors.any())
                 .build();
     }
 
