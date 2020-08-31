@@ -12,3 +12,16 @@ INSERT INTO role (description,role_name)
 VALUES ( 'testRoleDesc', 'role2' );
 INSERT INTO role (description,role_name)
 VALUES ( 'role2desc', 'role3' );
+
+CREATE TABLE person (
+    person_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    gender VARCHAR(7),
+    role_id int
+);
+
+INSERT INTO person (first_name,last_name,gender,role_id)
+VALUES ('lele','wang','male','1');
+INSERT INTO person (first_name,last_name,gender,role_id)
+VALUES ('lele2','wang','male','1');

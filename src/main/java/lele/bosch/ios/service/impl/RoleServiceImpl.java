@@ -1,10 +1,11 @@
-package lele.bosch.ios.service;
+package lele.bosch.ios.service.impl;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lele.bosch.ios.mapper.RoleMapper;
 import lele.bosch.ios.model.Role;
+import lele.bosch.ios.service.RoleService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lele.bosch.ios.mapper.PersonMapper">
+
+	<resultMap id="BaseResultMap" type="lele.bosch.ios.model.Person">
+		<result column="first_name" property="personId" />
+		<result column="last_name" property="lastName" />
+		<result column="gender" property="gender" />
+		<result column="role_id" property="roleId" />
+	</resultMap>
+
+	<select id="findPersonRoleByName" resultType="lele.bosch.ios.vo.PersonVO">
+        SELECT
+        p.*,
+        r.role_name,
+        r.description
+        FROM
+        person p
+        INNER JOIN `role` r ON p.role_id = r.role_id
+        WHERE
+      	p.last_name = #{lastName}
+     </select>
+
+	<!--
+		<select id="findWeeklyPkItems"
+			resultType="net.upplus.microserviceSchulteHome.entity.UpAbiPkDailyItem">
+        SELECT
+        updi.*
+        FROM
+        up_abi_pk_daily upd
+        INNER JOIN `up_abi_pk_daily_item` updi ON updi.pk_daily_id = upd.id
+        WHERE upd.pk_date BETWEEN #{weekStartDate} AND #{weekEndDate}
+        AND updi.item_rule=#{itemRule}
+  </select>
+
+
+	<select id="findDailyPkBestRecordInWeek" parameterType="net.upplus.microserviceSchulteHome.request.WeeklyRankRequest"
+			resultType="net.upplus.microserviceSchulteHome.vo.UserWeeklyBestResultVO">
+        SELECT
+        updu.user_id,
+        updu.user_name,
+        updu.item_rule,
+        updu.pk_date,
+        updu.pk_daily_item_id,
+        updu.item_key,
+        MAX(updu.best_record_answer_cost) bestRecordAnswerCost
+        FROM up_abi_pk_daily_user updu
+        WHERE EXISTS (
+            SELECT updi.* FROM
+            up_abi_pk_daily_item updi
+            INNER JOIN up_abi_lib_pk_item_detail ulpid ON ulpid.`id`=updi.`lib_pk_item_detail_id`
+            WHERE
+            ulpid.`item_key`='digitalSchulte'
+            AND ulpid.rule IN ('[4,4]','[5,5]','[6,6]','[7,7]','[8,8]','[9,9]')
+            AND updu.pk_daily_item_id=updi.`id`)
+        AND updu.best_record_score=1
+        AND updu.pk_date BETWEEN #{weekStartDate} AND #{weekEndDate}
+        GROUP BY user_id,item_rule
+  </select>
+  -->
+</mapper>
