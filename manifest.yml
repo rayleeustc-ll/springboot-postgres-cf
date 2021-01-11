@@ -1,10 +1,10 @@
 ---
 applications:
-- name: spring-postgres-cf
+- name: spring-postgres-cf-ssl
   memory: 1G
   path: target/postgres-con-boot-1.0.0-SNAPSHOT.jar
   services:
-  - pgsql
+  - pgsql11SSLtest
   
   env:
     JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
